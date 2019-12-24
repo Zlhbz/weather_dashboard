@@ -1,0 +1,47 @@
+.wrapper{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.head1{
+    height:80px;
+    background: rgb(26, 25, 25);
+    color: aliceblue;
+    /* padding-left: 400px;
+    padding-top: 20px; */
+}
+
+.left{
+    background:rgb(247, 245, 245);
+    min-height: min-content;
+    border-radius: 5px;
+}
+
+.input-group{
+    margin: 15px;
+}
+.btn{
+    margin:0px 15px 0px 0px;
+}
+.search_history{
+    height:40px;
+    background: white;
+    border-radius: 5px;
+    /* text-align: center; */
+    margin: 1px 15px 5px 15px;
+}
+
+.current_day{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(200, 207, 214);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.forecast{
+    width: 150px;
+    height: 150px;
+    background: royalblue;
+    margin:5px;
+    border-radius: 5px;
+}

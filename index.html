@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="head1 row" style="text-align: center;">
+            <h1>Weather Dashboard</h1>
+        </div>
+
+        <div class="row">
+            <div class="left col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <h4 style="text-align: center;">Search for a city</h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="search_history">City1</div>
+                <div class="search_history">City2</div>
+                <div class="search_history">City3</div>
+                <div class="search_history">City4</div>
+
+            </div>
+
+
+
+            <div class="right col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <div class="row current_day">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">CITY DATE ICON</div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">TEMPERATURE</div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">HUMIDITY</div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">WIND SPEED</div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">UV INDEX</div>
+                </div>
+
+                <div class="row">
+                    <h2 style="margin-left: 10px;"> 5-DAY FORECAST</h2>
+
+                    <div class="row">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+
+                        <div class="forecast col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div>DATE</div>
+                            <div>ICON</div>
+                            <div>TEMPERATURE</div>
+                            <div>HUMIDITY</div>
+                        </div>
+                        <div class="forecast col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                        <div class="forecast col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                        <div class="forecast col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                        <div class="forecast col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
