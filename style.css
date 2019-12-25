@@ -41,7 +41,7 @@
 .forecast{
     width: 150px;
     height: 150px;
-    background: royalblue;
+    background: rgb(81, 115, 216);
     margin:5px;
     border-radius: 5px;
 }
