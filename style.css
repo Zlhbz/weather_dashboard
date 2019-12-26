@@ -28,9 +28,10 @@
     border-radius: 5px;
     /* text-align: center; */
     margin: 1px 15px 5px 15px;
+    text-align: center;
 }
 
-.current_day{
+#current{
     border-style: solid;
     border-width: 1px;
     border-color: rgb(200, 207, 214);
@@ -41,7 +42,12 @@
 .forecast{
     width: 150px;
     height: 150px;
-    background: rgb(81, 115, 216);
+    background: rgb(45, 92, 235);
     margin:5px;
     border-radius: 5px;
 }
+/* 
+.current-temp{
+    display: block;
+    white-space: pre
+} */

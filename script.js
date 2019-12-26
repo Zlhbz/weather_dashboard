@@ -4,6 +4,7 @@ console.log(window);
 // console.log("Querying for City:" + city);
 var city = "";
 var dataOnDay;
+
 showHistory();
 
 
@@ -24,9 +25,6 @@ function showHistory() {
 }
 
 
-
-
-
 $(".btn-primary").on("click", function () {
     var city = $(".form-control").val().trim();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=2a27317982a2267a6e8a9336aba2ecfd";
@@ -41,17 +39,35 @@ $(".btn-primary").on("click", function () {
         console.log(response.main["temp"]);
         console.log(JSON.stringify(response));
         saveData(city);
+        showCurrentWeather();
     });
-
 })
 
-showCurrentWeather();
-
 function showCurrentWeather() {
-    var rightUpElement = $(".current_day");
-    var newH1 = $("<h1>");
-    newH1.text(dataOnDay["name"] + "  " + moment().format("MM DD YYYY") + "  " + dataOnDay["icon"]);
-    rightUpElement.append(newH1);
+    var rightUpElement = $("#current");
+    var newH3 = $("<h3>");
+    console.log(dataOnDay["name"]);
+    newH3.text(dataOnDay["name"] + "  " + moment().format("MM DD YYYY"));
+    var img = $("<img>");
+    img.attr("src", "http://openweathermap.org/img/wn/" + dataOnDay.weather[0].icon + "@2x.png");
+    newH3.append(img);
+    // rightUpElement.append(newH3);
+
+
+    var temp = $("<div>");
+    temp.attr("class", "current-temp");
+    temp.text("Temperature: " + dataOnDay.main["temp"] + "F");
+    // rightUpElement.append(temp);
+
+    var humidity = $("<div>");
+    // humidity.attr("class", "current-temp");
+    humidity.text("Humidity: " + dataOnDay.main["humidity"] + "%");
+    // rightUpElement.append(humidity);
+
+    var wind = $("<div>");
+    wind.attr("class", "current-temp");
+    wind.text("Wind speed: " + dataOnDay.wind["speed"] + "MPH");
+    rightUpElement.append(newH3, temp, humidity, wind);
 }
 
 function saveData(item) {
