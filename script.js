@@ -8,6 +8,9 @@ var dataOnDay;
 showHistory();
 
 
+
+
+
 function showHistory() {
     var array_history = [];
     array_history = JSON.parse(window.localStorage.getItem("weather_history"));
@@ -17,13 +20,12 @@ function showHistory() {
     console.log(array_history.length);
     for (var i = 0; i < array_history.length; i++) {
         var element = $("#search");
-        var newElement = $("<div>").attr("class", "search_history");
+        var newElement = $("<button>").attr("class", "btn-secondary col-xs-12 col-sm-12 col-md-12 col-lg-12");
         newElement.text(array_history[i]);
         console.log(array_history[i]);
         element.after(newElement);
     }
 }
-
 
 $(".btn-primary").on("click", function () {
     var city = $(".form-control").val().trim();
@@ -38,14 +40,67 @@ $(".btn-primary").on("click", function () {
         console.log("ilk response " + response["name"]);
         console.log(response.main["temp"]);
         console.log(JSON.stringify(response));
-        saveData(city);
+        saveData(response["name"]);
         showCurrentWeather();
     });
+
+    // display5day_forecast();
+
 })
+
+$(".btn-secondary").on("click", function () {
+    city = $(this).text();
+    console.log(this);
+    console.log(city);
+    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=2a27317982a2267a6e8a9336aba2ecfd";
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        dataOnDay = response;
+        console.log("Data on day is " + dataOnDay);
+        console.log("Got reponse:" + response);
+        console.log("ilk response " + response["name"]);
+        console.log(response.main["temp"]);
+        console.log(JSON.stringify(response));
+        saveData(response["name"]);
+        showCurrentWeather();
+    });
+
+    // display5day_forecast();
+
+})
+
+
+
+
+
+
+// function get_data() {
+
+//     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=2a27317982a2267a6e8a9336aba2ecfd";
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         dataOnDay = response;
+//         console.log("Data on day is " + dataOnDay);
+//         console.log("Got reponse:" + response);
+//         console.log("ilk response " + response["name"]);
+//         console.log(response.main["temp"]);
+//         console.log(JSON.stringify(response));
+//         saveData(response["name"]);
+//         showCurrentWeather();
+//     });
+
+//     // display5day_forecast();
+// }
+
+
 
 function showCurrentWeather() {
     var rightUpElement = $("#current");
-    var newH3 = $("<h3>");
+    var newH3 = $("#title");
     console.log(dataOnDay["name"]);
     newH3.text(dataOnDay["name"] + "  " + moment().format("MM DD YYYY"));
     var img = $("<img>");
@@ -54,20 +109,25 @@ function showCurrentWeather() {
     // rightUpElement.append(newH3);
 
 
-    var temp = $("<div>");
+    var temp = $("#temp");
     temp.attr("class", "current-temp");
     temp.text("Temperature: " + dataOnDay.main["temp"] + "F");
     // rightUpElement.append(temp);
 
-    var humidity = $("<div>");
+    var humidity = $("#humid");
     // humidity.attr("class", "current-temp");
     humidity.text("Humidity: " + dataOnDay.main["humidity"] + "%");
     // rightUpElement.append(humidity);
 
-    var wind = $("<div>");
-    wind.attr("class", "current-temp");
+    var wind = $("#wind");
     wind.text("Wind speed: " + dataOnDay.wind["speed"] + "MPH");
-    rightUpElement.append(newH3, temp, humidity, wind);
+
+
+    var uv = $("#index");
+    uv.text("UV Index: " + dataOnDay.wind["speed"] + "MPH");
+
+
+    rightUpElement.append(newH3, temp, humidity, wind, uv);
 }
 
 function saveData(item) {
@@ -85,13 +145,17 @@ function saveData(item) {
 }
 
 
-// var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=2a27317982a2267a6e8a9336aba2ecfd";
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
-//     console.log("Got reponse:" + response);
-//     console.log(JSON.stringify(response));
-//     // console.log(response["name"]);
-//     // console.log(response.main["temp"]);
-// });
+// function display5day_forecast() {
+//     var queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + city + ",&usmode=xml&APPID=2a27317982a2267a6e8a9336aba2ecfd";
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         console.log("working")
+//         data_forecast = response;
+//         console.log("Data for forcast is " + data_forecast);
+
+//     });
+
+// }
+
