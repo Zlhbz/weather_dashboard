@@ -42,7 +42,7 @@ function display_current_Weather() {
     var rightUpElement = $("#current");
     var newH3 = $("#title");
     console.log(dataOnDay);
-    newH3.text(dataOnDay["name"] + "  " + moment().format("MM DD YYYY"));
+    newH3.text(dataOnDay["name"] + "  " + moment().format("MM/DD/YYYY"));
     var img = $("<img>");
     img.attr("src", "http://openweathermap.org/img/wn/" + dataOnDay.weather[0].icon + "@2x.png");
     newH3.append(img);
@@ -70,6 +70,7 @@ function display_current_Weather() {
 
 
 function display_forecast_5day() {
+    $("#forecast_5").empty();
     var url = "https://api.openweathermap.org/data/2.5/forecast";
     $.ajax({
         url: url,
@@ -86,8 +87,9 @@ function display_forecast_5day() {
                 element1.attr("class", "forecast");
 
                 var element2 = $("<div>");
-                element2.text(response2.list[8 * i].dt_txt);
-
+                var date_val = moment(response2.list[8 * i].dt_txt)
+                //element2.text(response2.list[8 * i].dt_txt);
+                element2.text(date_val.format("MM/DD/YYYY"));
                 var img = $("<img>");
                 img.attr("src", "http://openweathermap.org/img/wn/" + response2.list[8 * i].weather[0].icon + "@2x.png");
 
@@ -104,21 +106,6 @@ function display_forecast_5day() {
             }
         }
     });
-}
-
-
-function saveData(item) {
-    var array1 = window.localStorage.getItem("weather_history");
-
-    if (array1 == null) {
-        array1 = [item];
-    } else {
-        array1 = JSON.parse(array1);
-        if (array1.indexOf(item) === -1) {
-            array1.push(item);
-        }
-    }
-    window.localStorage.setItem("weather_history", JSON.stringify(array1));
 }
 
 
@@ -146,3 +133,19 @@ function display_last_searched() {
     });
 
 }
+
+
+function saveData(item) {
+    var array1 = window.localStorage.getItem("weather_history");
+
+    if (array1 == null) {
+        array1 = [item];
+    } else {
+        array1 = JSON.parse(array1);
+        if (array1.indexOf(item) === -1) {
+            array1.push(item);
+        }
+    }
+    window.localStorage.setItem("weather_history", JSON.stringify(array1));
+}
+

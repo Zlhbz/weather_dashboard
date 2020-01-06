@@ -3,14 +3,16 @@
 }
 
 #head1{
-    height:80px;
+    height:100px;
     background: rgb(26, 25, 25);
     color: aliceblue;
     text-align: center;
     /* padding-left: 400px;
     padding-top: 20px; */
 }
-
+h1{
+    margin:20px 0px 0px 0px;
+}
 
 .left{
     background:rgb(247, 245, 245);
@@ -42,6 +44,7 @@
     border-radius: 5px;
     float: left;
     color: honeydew;
+    text-align: center;
 }
 
 .current_weather{
