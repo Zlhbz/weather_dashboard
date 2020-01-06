@@ -2,7 +2,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.head1{
+#head1{
     height:80px;
     background: rgb(26, 25, 25);
     color: aliceblue;
@@ -10,6 +10,7 @@
     /* padding-left: 400px;
     padding-top: 20px; */
 }
+
 
 .left{
     background:rgb(247, 245, 245);
@@ -35,11 +36,12 @@
 
 .forecast{
     width: 150px;
-    height: 150px;
+    height: 200px;
     background: rgb(111, 142, 235);
     margin:10px;
     border-radius: 5px;
     float: left;
+    color: honeydew;
 }
 
 .current_weather{
