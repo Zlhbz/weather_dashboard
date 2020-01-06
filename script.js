@@ -49,7 +49,8 @@ function display_current_Weather() {
 
     var temp = $("#temp");
     temp.attr("class", "current-temp");
-    temp.text("Temperature: " + dataOnDay.main["temp"] + "F");
+    var temp_fahrenheit = (((dataOnDay.main["temp"]) * 9 / 5) - 459.67).toFixed(1);
+    temp.text("Temperature: " + temp_fahrenheit + " F");
 
     var humidity = $("#humid");
     humidity.text("Humidity: " + dataOnDay.main["humidity"] + "%");
@@ -93,9 +94,8 @@ function display_forecast_5day() {
                 var img = $("<img>");
                 img.attr("src", "http://openweathermap.org/img/wn/" + response2.list[8 * i].weather[0].icon + "@2x.png");
 
-
                 var element3 = $("<div>");
-                element3.text("Temp: " + response2.list[8 * i].main["temp"]);
+                element3.text("Temp: " + ((response2.list[8 * i].main["temp"] * 1.8) + 32).toFixed(1) + " F");
 
                 var element4 = $("<div>");
                 element4.text("Humidity: " + response2.list[8 * i].main["humidity"]);
